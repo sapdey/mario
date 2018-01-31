@@ -20,7 +20,11 @@
                 positionY = positionY - 50
                 if (positionY < y * 50) {
                     character.style.top = `${positionY}px`;
+                    character.style.transform = "rotate(270deg)";
                     count++;
+                    if (positionY < 13) {
+                        character.style.transform = "rotate(90deg)";
+                    }
                 }
             }
 
@@ -30,7 +34,11 @@
                 positionY = positionY + 50
                 if (positionY < y * 50) {
                     character.style.top = `${positionY}px`;
+                    character.style.transform = "rotate(90deg)";
                     count++;
+                    if (positionY > (y - 1) * 50) {
+                        character.style.transform = "rotate(270deg)";
+                    }
                 }
             }
         } else if (e.keyCode === 39) {              //Right
@@ -38,7 +46,11 @@
                 positionX = positionX + 50
                 if (positionX < x * 50) {
                     character.style.left = `${positionX}px`;
+                    character.style.transform = "rotate(360deg)";
                     count++;
+                    if (positionX > (x - 1) * 50) {
+                        character.style.transform = "rotate(180deg)";
+                    }
                 }
             }
         } else if (e.keyCode === 37) {               //left
@@ -47,7 +59,11 @@
                 positionX = positionX - 50
                 if (positionX < x * 50) {
                     character.style.left = `${positionX}px`;
+                    character.style.transform = "rotate(180deg)";
                     count++;
+                    if (positionX < 13) {
+                        character.style.transform = "rotate(360deg)";
+                    }
                 }
             }
         }
@@ -112,7 +128,7 @@
             }
         }
         a.shift();
-        
+
         a = Array.from(new Set(a.map((e) => JSON.stringify(e)))).map(e => JSON.parse(e))
         return a;
     }
